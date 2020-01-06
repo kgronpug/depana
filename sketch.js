@@ -3,10 +3,12 @@ var y=-20;
 var x=200;
 var speed = 2;
 var score= 0;
-var img;
+var trophy, hands;
 
 function preload() {
-	img = loadImage('https://cdn.shopify.com/s/files/1/1728/2157/products/05-62680_KidsReplacementBall_Green_A_1024x1024.jpg?v=1553029312');
+	trophy = loadImage('https://raw.githubusercontent.com/kgronpug/depana/master/trophy.png');
+	hands = loadImage('https://raw.githubusercontent.com/kgronpug/depana/master/hands.png');
+	
 }
 
 function setup() {
@@ -30,8 +32,7 @@ function startScreen(){
 		textSize(40);
 		text('DEP-ANA GOLD', width / 2, height / 2)
 		textSize(20);
-		text('click to start', width / 2, height / 2 + 40);
-		image(img, 20, 20, 20, 20);
+		text('GRIB POKALEN', width / 2, height / 2 + 40);
 		reset();
 }
 
@@ -40,14 +41,15 @@ function gameOn(){
 	fill(0, 0, 0);
 	textSize(12);
 	text("score = " + score, 30,20)
-	ellipse(x,y,20,20)
-	rectMode(CENTER)
-	rect(mouseX,height-10,50,30)
+	image(trophy, x, y, 20, 20);
+
+	image(hands, mouseX-40, height-40,80,40);
+	
 	y+= speed;
 if(y>height){
-  	screen =2
+  	screen = 2
 	 }
-if(y>height-10 && x>mouseX-20 && x<mouseX+20){
+if(y>height-30 && x+5>mouseX-40 && x-15<mouseX+40){
 		y=-20
 		speed+=.5
 		score+= 1
@@ -69,7 +71,7 @@ function endScreen(){
 		text('GAME OVER', width / 2, height / 2)
 		textSize(15);
 		text("SCORE = " + score, width / 2, height / 2 + 20)
-		text('click to play again', width / 2, height / 2 + 40);
+		text('klik for at spille igen', width / 2, height / 2 + 40);
 }
 
 function mousePressed(){
